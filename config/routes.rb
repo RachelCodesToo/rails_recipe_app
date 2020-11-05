@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #write custom routes above
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+  
   resources :reviews
   resources :users
   resources :recipes

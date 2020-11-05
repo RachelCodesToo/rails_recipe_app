@@ -37,3 +37,4 @@ Category
 - has_many :recipes
 - has_many users, through: :recipes
 
+rails c -s *** sandbox 
