@@ -1,0 +1,16 @@
+<%= form_for([@review.recipe,@review]) do |f|%>
+
+ <% if !@review.recipet %>
+  <%= f.label :recipeName%>
+  <%= f.collection_select :recipe_id, Recipe.all, :id, :recipeName %>
+<% else %>
+    <%= f.hidden_field :recipe_id %>
+<% end %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+
+  <%= f.submit %>
+
+<% end %>
