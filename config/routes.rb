@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  root "sessions#home"
   #write custom routes above
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
+
+  #login
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+
+  #logout
+  delete '/logout' => 'sessions#destroy'
   
   resources :reviews
   resources :users
