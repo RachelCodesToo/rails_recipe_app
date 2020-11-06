@@ -1,3 +1,12 @@
+<% if @review.recipe %>
+<h1>New Review for <%= @review.recipe.recipeName%>!</h1>
+<% else %>
+<h1>New Review!</h1>
+<% end %>
+
+
+
+
 <%= form_for([@review.recipe,@review]) do |f|%>
 
  <% if !@review.recipet %>
