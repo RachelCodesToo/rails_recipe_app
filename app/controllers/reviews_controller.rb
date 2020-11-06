@@ -2,6 +2,21 @@ class ReviewsController < ApplicationController
     before_action :redirect_if_not_logged_in
     before_action :set_review, only:[:show, :edit, :update]
     before_action :redirect_if_not_review_author, only: [:edit, :update]
+
+    def index
+        if params[:recipe_id]
+            @recipe = Recipe.find_by_id(params[:recipe_id])
+            if @recipe 
+                @reviews = @recipe.reviews
+            else
+                flash[:message] = "That Recipe doesn't exist"
+                @reviews = Review.all 
+            end 
+        else
+            @reviews = Review.all
+        end 
+    end
+
     
     def new
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])

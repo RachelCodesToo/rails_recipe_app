@@ -1,14 +1,4 @@
-<h1>All Recipes!</h1>
+<% index_display_header %>
 
-<%= form_for(@recipe) do |f| %>
-   
-    <%= f.label :recipeName %>
-    <%= f.text_field :recipeName %>
-    <br>
-    <br>
-    <%= f.label :recipeInstructions %>
-    <%= f.text_area :recipeInstructions %>
-
-    <%= f.submit %>
-
-    <% end %>
+<%= form_tag("/recipes", method: 'get') do %>
+    <%= label_tag(%>  
