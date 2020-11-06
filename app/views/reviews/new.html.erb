@@ -9,7 +9,7 @@
 
 <%= form_for([@review.recipe,@review]) do |f|%>
 
- <% if !@review.recipet %>
+ <% if !@review.recipe %>
   <%= f.label :recipeName%>
   <%= f.collection_select :recipe_id, Recipe.all, :id, :recipeName %>
 <% else %>

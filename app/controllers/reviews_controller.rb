@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
             if @recipe 
                 @reviews = @recipe.reviews
             else
-                flash[:message] = "That Recipe doesn't exist"
+                @error = "That Recipe doesn't exist"
                 @reviews = Review.all 
             end 
         else
