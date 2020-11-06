@@ -1,0 +1,12 @@
+<h1> Edit Review! </h1>
+
+<%= form_for(@reveiew) do |f|%>
+
+<%= f.label :review %>
+<%= f.collection_select :recipe_id, Recipe.all, :id, :recipeName %>
+
+<%= f.label :content %>
+<%= f.text_field :content %>
+
+<%= f.submit %>
+<% end %>
