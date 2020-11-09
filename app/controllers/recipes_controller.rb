@@ -8,16 +8,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.new
        end 
     end 
-
-    def index 
-        if params[:user_id] && User.find_by_id(params[:user_id])
-            @recipe = @user.recipes.alpha
-        else 
-            @error = "That user doesn't exist" if params[:user_id]
-            
-        end 
-    end 
-
+ 
     def create
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.save
@@ -26,6 +17,17 @@ class RecipesController < ApplicationController
             render :new
         end
     end 
+    
+    def index 
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @recipe = @user.recipes
+        else 
+            @error = "That user doesn't exist" if params[:user_id]
+            @recipe = Recipe.all
+        end 
+    end 
+
+    
 
     def show 
     end 
@@ -38,8 +40,7 @@ class RecipesController < ApplicationController
 
     def recipe_params
         params.require(:recipe).permit(:recipeName, :recipeInstructions)
-    end 
+    end
 
+end 
 
-end
- 
