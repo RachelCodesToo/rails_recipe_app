@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
     before_action :redirect_if_not_logged_in
-    binding.pry
+   
     def new 
        if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @recipe = @user.recipes.build
@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
     
 
     def show 
-        @recipe = Rost.find_by_id(params[:id])
+        @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe
     end 
 
