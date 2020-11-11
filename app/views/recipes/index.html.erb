@@ -1,1 +1,7 @@
-<h1></h1>
+<h1> All Recipes </h1>
+
+<% if @recipes.blank? %>
+    <h2> No Recipes made, try and make some!</h2>
+<% else %>
+    <%= render partial: "recipes", locals: {recipes: @recipes} %>
+<% end %>
