@@ -1,1 +1,12 @@
-<h1>You will edit your recipe here</h1>
+<h4>Edit <%= @recipe.recipeName %>!</h4>
+
+<%= form_for(@recipe) do |f| %>
+    <%= f.label :recipeName %>
+    <%= f.text_field :recipeName %>
+    <br><br>
+    <%= f.label :recipeInstructions %>
+    <%= f.text_field :recipeInstructions %>
+    <br><br>
+    <%= f.submit %>
+
+<% end %>
