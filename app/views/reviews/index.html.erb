@@ -1,1 +1,11 @@
-<h1> Review for <%= @user.recipeName %></h1><br>
+<% if @recipe %>
+<h1>Reviews for <%= @recipe.recipeName %></h1>
+<% else %>
+<h1> All Comment </h1>
+<% end %>
+
+<ul>
+<% @reviews.each do |r| %>
+<li><%= r.user.username%> says "<%= r.content%>" about this post: <strong><%= link_to r.recipe.recipeName, recipe_path(r.recipe_id) %></strong></li>
+<% end %>
+</ul>

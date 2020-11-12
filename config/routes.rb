@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   resources :reviews
   resources :users do 
-    resources :recipes, only: [:new, :create, :index]
+    resources :recipes, only: [:new, :create, :index, :show, :destroy]
   end
 
   resources :recipes do 

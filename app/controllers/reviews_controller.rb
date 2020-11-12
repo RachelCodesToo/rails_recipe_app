@@ -32,16 +32,18 @@ class ReviewsController < ApplicationController
     end 
 
     def show
+    
     end 
 
     def edit 
     end 
 
     def update
+        redirect_to reviews_path if @review.user != current_user
         if @review.update(review_params)
-            redirect_to review_path(@review)
-        else 
-            render :edit
+          redirect_to review_path(@review)
+        else
+          render :edit
         end
     end 
 
