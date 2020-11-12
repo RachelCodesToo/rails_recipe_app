@@ -1,0 +1,7 @@
+<h2><%= @review.content%> - <%= @review.user.username.capitalize%></h2>
+
+<% if @review.user == current_user %>
+  <%= link_to "Edit Comment", edit_review_path(@review)%>
+<% end %>
+
+<h4>Read the Recipe here: <%= link_to @review.recipe.recipeName, recipe_path(@review.recipe_id) %></h4>
