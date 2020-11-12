@@ -4,16 +4,11 @@ class ReviewsController < ApplicationController
     before_action :redirect_if_not_review_author, only: [:edit, :update]
 
     def index
-        if params[:recipe_id]
-            @recipe = Recipe.find_by_id(params[:recipe_id])
-            if @recipe 
+        if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
                 @reviews = @recipe.reviews
             else
-                @error = "That Recipe doesn't exist"
-                @reviews = Review.all 
-            end 
-        else
-            @reviews = Review.all
+                @error = "That Recipe doesn't exist" if params[:recipe_id]
+                @reviews = Review.all
         end 
     end
 
@@ -37,14 +32,17 @@ class ReviewsController < ApplicationController
     end 
 
     def show
-        @review = Review.find_by_id(params[:id])
-        redirect_to reviews_path if !@review
     end 
 
     def edit 
     end 
 
     def update
+        if @review.update(review_params)
+            redirect_to review_path(@review)
+        else 
+            render :edit
+        end
     end 
 
     private
