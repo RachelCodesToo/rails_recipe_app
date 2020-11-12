@@ -1,15 +1,11 @@
 <h1><%= "Your Recipes" %></h1><br>
 
-<%= form_tag("/recipes", method: "get") do %>
-  <%= label_tag(:q, "Search for Recipes Here:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %><br>
+<% @recipe.each do |recipe|%>
+<%= link_to recipe.recipeName, recipe_path(recipe) %> <br>
+<%= recipe.recipeInstructions %> <br>
+<br><br ->
+<% end %>
 
-<% if @recipes.blank? %>
+<% if @recipe.empty? %>
   <h2>No recipes yet, create a recipe now! <%= link_to " Create ", new_recipe_path %></h2>
-<% else %>
-
-  <%= render @recipes %>
-
 <% end %>

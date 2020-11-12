@@ -13,13 +13,7 @@ class RecipesController < ApplicationController
     end 
     
     def index 
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @recipe = @user.recipes
-        else 
-            @error = "That user doesn't exist" if params[:user_id]
             @recipe = Recipe.all
-        end 
-        @posts = @posts.search(params[:q].downcase) if params[:q] && !params[:q].empty?
     end 
  
     def create
