@@ -14,10 +14,11 @@ class RecipesController < ApplicationController
     
     def index 
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @recipe = @user.recipes
+            @recipe = @user.recipes.alpha
         else 
             @error = "That user doesn't exist" if params[:user_id]
-            @recipe = Recipe.all
+            @recipe = Recipe.alpha.includes(:user)
+
         end 
     end 
  

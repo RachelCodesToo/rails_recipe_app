@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :reviewed_recipes, through: :reviews, source: :recipe
     has_secure_password
 
-    validates :username, :email, presence: true
+    validates :username, :email, :password, presence: true
 
     
 end

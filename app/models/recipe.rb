@@ -4,5 +4,7 @@ class Recipe < ApplicationRecord
   has_many :users, through: :reviews
   validates :recipeName, :recipeInstructions, presence: true
   
+  scope :alpha, -> { order(:recipeName)}
+  
 
 end
