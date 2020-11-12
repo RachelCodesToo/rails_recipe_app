@@ -10,6 +10,13 @@ Rails.application.routes.draw do
 
   #logout
   delete '/logout' => 'sessions#destroy'
+
+  #omniauth callback route
+  get '/auth/google_oauth2/callback' => 'sessions#google'
+
+  #dynamic path for omniauth
+  #get '/auth/:provider/callback' =>
+
    
   resources :recipes do 
     resources :reviews
