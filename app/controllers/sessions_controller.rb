@@ -1,10 +1,5 @@
 class SessionsController < ApplicationController
 
-
-    def new
-    end 
-
-
     def destroy 
         session.clear
         redirect_to root_path
@@ -21,7 +16,7 @@ class SessionsController < ApplicationController
         end 
     end 
 
-    def google 
+    def omniauth
         @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
             user.username = auth["info"]["first_name"]
             user.password = SecureRandom.hex(10)
