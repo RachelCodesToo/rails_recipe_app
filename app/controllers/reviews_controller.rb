@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     
     def new
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
-            @review = @recipe.comments.build
+            @review = @recipe.reviews.build
         else
             @error = "That recipe does not exist." if params[:recipe_id]
             @review = Review.new
