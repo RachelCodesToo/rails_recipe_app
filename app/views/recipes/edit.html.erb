@@ -1,5 +1,7 @@
 <h4>Edit <%= @recipe.recipeName %>!</h4>
 
+<%= render partial: "layouts/errors", locals: {object: @recipe} %>
+
 <%= form_for(@recipe) do |f| %>
     <%= f.label :recipeName %>
     <%= f.text_field :recipeName %>
