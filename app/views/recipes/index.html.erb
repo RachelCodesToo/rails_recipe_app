@@ -1,5 +1,11 @@
 <h1> All Recipes </h1>
-<h2> <%= @recipe.recipeName %></h2>
+
+<% @recipe.each do |recipe| %>
+<ul>
+    <%= recipe.recipeName %> <br><br>
+    <%= recipe.recipeInstructions %> <br> ------ <br>
+</ul>
+<% end %>
 
 
 <% if @recipes.blank? %>
