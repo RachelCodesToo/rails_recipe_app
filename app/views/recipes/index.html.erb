@@ -3,7 +3,7 @@
 <% @recipe.each do |recipe|%>
 <%= link_to recipe.recipeName, recipe_path(recipe) %> <br>
 <%= recipe.recipeInstructions %> <br>
-<br><br ->
+<br><br>
 <% end %>
 
 <% if @recipe.empty? %>
