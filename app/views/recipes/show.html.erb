@@ -1,1 +1,26 @@
-<h1><%=@recipe.recipeName %></h1>
+<h2><%= @recipe.recipeName %></h2><br>
+<h4>Written by: <%=@recipe.user.username %></h4><br>
+
+
+
+<div class="mb-3 p-3 border bg-white"><%= @recipe.recipeInstructions %></div><br><br>
+
+<p><%= link_to 'Add a New Comment', new_recipe_review_path(@recipe), class: 'btn btn-secondary' %></p><br>
+
+<% if !@recipe.reviews.empty? %>
+  <h4> All Comments:</h4><br><br>
+
+  <% @recipe.reviews.order(updated_at: :desc).limit(3).each do |r| %>
+    <div>
+      <strong><%=r.user.username%></strong><br><br>
+
+      <p><%= link_to r.review, recipe_review_path(@review,r)%> at <%= r.updated_at.strftime("%I:%M %p on %m/%d/%Y")%></p><br>
+    </div><br>
+  <% end %>
+  
+<% if @recipe.user == current_user %>
+  <h4><%= link_to "Edit", edit_recipe_path(@recipe), class: 'btn btn-secondary' %></h4><br>
+  <h4><%= button_to 'Delete', @recipe,  method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></h4><br>
+<% end %>
+
+<% end %>

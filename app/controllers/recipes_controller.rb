@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
     before_action :redirect_if_not_logged_in
-    before_action :set_blog, only: [:show, :edit, :update, :destroy]
+    before_action :set_recipe, only: [:show, :edit, :update, :destroy]
     before_action :redirect_if_not_logged_in, only: [:update, :destroy]
     
     def new 
@@ -48,6 +48,10 @@ class RecipesController < ApplicationController
     end
 
     private
+
+    def set_recipe
+        @recipe = Recipe.find(params[:id])
+      end
 
     def recipe_params
         params.require(:recipe).permit(:recipeName, :recipeInstructions)
