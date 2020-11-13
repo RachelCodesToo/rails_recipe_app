@@ -20,9 +20,6 @@ class UsersController < ApplicationController
         redirect_to '/' if !@user
     end
 
-    def most_recipes
-        @users = User.most_recipes
-    end 
 
 
     private 

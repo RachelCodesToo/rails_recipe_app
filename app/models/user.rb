@@ -6,8 +6,5 @@ class User < ApplicationRecord
 
     validates :username, :email, :password, presence: true
 
-    def self.most_recipes
-        joins(:recipes).group(:user_id).order("count(user_id) DESC").limit(3)
-    end
     
 end
