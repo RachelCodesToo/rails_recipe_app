@@ -1,7 +1,7 @@
-<h2><%= @recipe.recipeName %></h2><br>
+<h2><%= @recipe.recipeName %></h2>
 <h4>By: <%=@recipe.user.username %></h4><br>
 
-<div class="mb-3 p-3 border bg-white"><%= @recipe.recipeInstructions %></div><br><br>
+<div class="mb-3 p-3 border bg-gray"><%= @recipe.recipeInstructions %></div><br><br>
 
 <p><%= link_to 'Add a New Review', new_recipe_review_path(@recipe), class: 'btn btn-secondary' %></p><br>
 
@@ -10,7 +10,7 @@
 
 <h4>Most Recent Comments:</h4>
   
-  <% @recipe.reviews.order(updated_at: :desc).limit(3).each do |r|%>
+  <% @recipe.reviews.order(updated_at: :desc).limit(2).each do |r|%>
     <li>
       <strong><%= r.user.username%></strong> says "<%= link_to r.content, recipe_review_path(@recipe,r)%>" at <%= r.updated_at.strftime("%I:%M %p on %m/%d/%Y") %>
     </li>
