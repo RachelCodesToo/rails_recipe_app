@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
     private
 
     def set_recipe
-        @recipe = Recipe.find_by(id: params[:id])
+        @recipe = Recipe.find_by_id(params[:id])
         if !@recipe
             flash[:message] = "Recipe was not found"
             redirect_to recipes_path
