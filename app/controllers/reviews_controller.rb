@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
                 @reviews = @recipe.reviews
             else
                 @error = "That Recipe doesn't exist" if params[:recipe_id]
-                @reviews = Review.alpha
+                @reviews = Review.all 
         end 
     end
 
