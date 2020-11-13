@@ -31,14 +31,16 @@ class RecipesController < ApplicationController
         end
     end 
     
-    def show; end 
+    def show
+    end 
 
     def destroy
         @recipe.destroy
         redirect_to current_user
     end 
 
-    def edit; end 
+    def edit
+    end 
 
     def update
         if @recipe.update(recipe_params)

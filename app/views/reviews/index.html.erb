@@ -6,6 +6,6 @@
 
 <ul>
 <% @reviews.each do |r| %>
-<li><%= r.user.username%> says "<%= r.content%>" about this post: <strong><%= link_to r.recipe.recipeName, recipe_path(r.recipe_id) %></strong></li>
+<li><%= r.user.username%> says "<%= r.content%>" about this recipe: <strong><%= link_to r.recipe.recipeName, recipe_path(r.recipe_id) %></strong></li>
 <% end %>
 </ul>
